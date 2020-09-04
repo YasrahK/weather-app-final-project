@@ -10,14 +10,74 @@
 </head>
 <body>
     <div class="container">
-  <div class="card" class="main-display">
-     <div class="card-body">
+       <div class="weather-app">
         <form id="search-city">
-           <input type="text" placeholder="Enter a city" autocomplete="off" id="input-place"/>
-           <input type="submit" value="search" id="submit-city"/>
+           <div class="row" >
+           <div class="col-9">
+           <input type="text" placeholder="Enter a city..." autocomplete="off" id="input-place" class="form-control mb-3"/>
+         </div>
+         <div class="col-3">
+           <input type="submit" value="search" class="btn btn-primary mb-3" id="submit-city"/>
+         </div>
+      </div>
            </form>
-     </div>
-  </div>
+           <div class="c-f-buttons">
+           <button type="button" class="btn btn-info mb-3" id="celcius">°C</button>
+           <button type="button" class="btn btn-info btn-fahrenheit mb-3" id="fahrenheit">°F</button>
+         </div>
+        <div class="current-display">
+           <div class="card" style="width: 100%;">
+         <div class="card-body">
+            <div class="row">
+               <div class="col">
+                  <img src="https://dazzling-joliot-408abb.netlify.app/media/partlycloudy.png" alt="currentweather"/>
+               </div>
+               <div class="col">
+                  <h1>
+                     <span class="city">Chicago <br /></span>
+                     <span class="description">
+                        <small> Partly Cloudy</small><br />
+                     </span>
+                     <span class="unit">81</span>°<span id="weather-unit">F</span>
+                  </h1>
+               </div>
+               <div class="col" id="display-date">
+                  <h1>
+                  <span id="day"> Wednesday <br /></span>
+                  <span id="date"><small>09/04/2020</small><br /></span>
+                  <span id="time">11:33</span>
+               </h1>
+               </div>
+            </div>
+            <hr />
+            <div class="row">
+               <div class="col">
+                  Maximum<br />Temperature<br /><span id="max-temp">22</span>°
+               </div>
+               <div class="col">
+                  Minimum<br />Temperature<br /><span id="min-temp">17</span>°
+               </div>
+               <div class="col">
+                  Feels<br />Like<br /><span id="feels-like">22</span>°
+               </div>
+               <div class="col">
+                  WInd<br />Speed<br /><span id="wind-speed">100</span>m/s
+               </div>
+               <div class="col">
+                  Current<br />Humidity<br /><span id="humidity">69</span>%
+               </div>
+            </div>
+         </div>
+      </div>
+        </div>
+        <div class="3-hours-display"> 
+<div class="card" style="width: 100%;">
+<div class="card-body">
+</div>
+</div>
+</div>
+</div>
+<p>Open-source code by <a href=" ">Yasrah Kapadia</a></p>
 </div>
    <script src="src/app.js"></script>
 </body>
