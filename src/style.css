@@ -1,8 +1,15 @@
+
 .weather-app {
     max-width: width 600px;
     margin: 30px auto;
     padding: 20px;
     border: 1px solid black;
+}
+.container {
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.card {
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 200%);
 }
 
 .c-f-buttons{
@@ -17,4 +24,8 @@
 
 .current-display img {
     width: 30%;
+}
+
+.three-hours-forecast {
+    margin-top: 20px;
 }
