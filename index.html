@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css">
     <title>weather-app</title>
 </head>
@@ -34,11 +35,11 @@
                </div>
                <div class="col">
                   <h1>
-                     <span class="city">Chicago <br /></span>
-                     <span class="description">
-                        <small> Partly Cloudy</small><br />
+                     <span id="city"><br /></span>
+                     <span>
+                        <small id="description"></small><br />
                      </span>
-                     <span class="unit">81</span>°<span id="weather-unit">F</span>
+                     <span id="temp-reading"></span>°<span id="weather-unit">F</span>
                   </h1>
                </div>
                <div class="col" id="display-date">
@@ -52,7 +53,7 @@
             <hr />
             <div class="row">
                <div class="col">
-                  Maximum<br />Temperature<br /><span id="max-temp">22</span>°
+                  Maximum<br />Temperature<br /><span id="max-temp"></span>°
                </div>
                <div class="col">
                   Minimum<br />Temperature<br /><span id="min-temp">17</span>°
@@ -61,10 +62,13 @@
                   Feels<br />Like<br /><span id="feels-like">22</span>°
                </div>
                <div class="col">
-                  WInd<br />Speed<br /><span id="wind-speed">100</span>m/s
+                  Wind<br />Speed<br /><span id="wind-speed">100</span> km/h
                </div>
                <div class="col">
                   Current<br />Humidity<br /><span id="humidity">69</span>%
+               </div>
+               <div class="col">
+                  Current<br />Pressure<br /><span id="pressure"></span> mb
                </div>
             </div>
          </div>

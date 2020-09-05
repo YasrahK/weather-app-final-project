@@ -3,7 +3,7 @@
     max-width: width 600px;
     margin: 30px auto;
     padding: 20px;
-    border: 1px solid black;
+    
 }
 .container {
     background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
@@ -28,4 +28,8 @@
 
 .three-hours-forecast {
     margin-top: 20px;
+}
+
+#description::first-letter{
+    text-transform:uppercase;
 }
