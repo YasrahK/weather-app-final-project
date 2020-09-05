@@ -1,9 +1,14 @@
 
+body {
+    background-image: url(../media/chicago.jpg);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 .weather-app {
     max-width: width 600px;
     margin: 30px auto;
     padding: 20px;
-    
 }
 .container {
     background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
@@ -43,6 +48,3 @@
     text-decoration: none;
 }
 
-#forecast {
-    list-style: horizontal;
-}
