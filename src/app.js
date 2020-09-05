@@ -34,7 +34,6 @@ function formatDate(timestamp) {
 
 
 function showTemperature(response) {
-    console.log(response.data);
     let temperatureElement=document.querySelector("#temp-reading");
     let cityElement=document.querySelector("#city");
     let descriptionElement=document.querySelector("#description");
@@ -45,6 +44,7 @@ function showTemperature(response) {
     let humidityElement=document.querySelector("#humidity");
     let pressureElement=document.querySelector("#pressure");
     let dateElement=document.querySelector("#date");
+    let iconElement=document.querySelector("#icon");
     temperatureElement.innerHTML = Math.round(response.data.main.temp);
     cityElement.innerHTML=response.data.name;
     descriptionElement.innerHTML=response.data.weather[0].main;
@@ -55,12 +55,13 @@ function showTemperature(response) {
     humidityElement.innerHTML=response.data.main.humidity;
     pressureElement.innerHTML=response.data.main.pressure;
     dateElement.innerHTML=formatDate(response.data.dt*1000);
-
+    iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    iconElement.setAttribute("alt", response.data.weather[0].description)
 }
 
 
-
+let city = "Chicago";
 let apiKey = "5fc324aaf951a7a1b818994b70c47e36";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Chicago&appid=${apiKey}&units=metric`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(showTemperature);
