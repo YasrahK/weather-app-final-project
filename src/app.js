@@ -1,3 +1,38 @@
+function formatDate(timestamp) {
+    let now = new Date(timestamp);
+    let date = now.getDate();
+    let hours = now.getHours();
+    if(hours <0){
+        hours = `0${hours}`;
+    }
+    let minutes = now.getMinutes();
+    if (minutes <10) {
+        minutes = `0${minutes}`;
+    }
+    let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    let day = days[now.getDay()]; 
+    let months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+      let month = months[now.getMonth()];
+      let year = now.getFullYear();
+    return `${day} <br /><small> ${hours}:${minutes}<br />${month} ${date}, ${year}</small>`;
+}
+
+
+
+
 function showTemperature(response) {
     console.log(response.data);
     let temperatureElement=document.querySelector("#temp-reading");
@@ -9,6 +44,7 @@ function showTemperature(response) {
     let windSpeedElement=document.querySelector("#wind-speed");
     let humidityElement=document.querySelector("#humidity");
     let pressureElement=document.querySelector("#pressure");
+    let dateElement=document.querySelector("#date");
     temperatureElement.innerHTML = Math.round(response.data.main.temp);
     cityElement.innerHTML=response.data.name;
     descriptionElement.innerHTML=response.data.weather[0].main;
@@ -18,6 +54,7 @@ function showTemperature(response) {
     windSpeedElement.innerHTML=Math.round(response.data.wind.speed);
     humidityElement.innerHTML=response.data.main.humidity;
     pressureElement.innerHTML=response.data.main.pressure;
+    dateElement.innerHTML=formatDate(response.data.dt*1000);
 
 }
 
