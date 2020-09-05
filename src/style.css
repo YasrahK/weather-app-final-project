@@ -42,3 +42,7 @@
 .weather-temperature.active:hover {
     text-decoration: none;
 }
+
+#forecast {
+    list-style: horizontal;
+}

@@ -1,14 +1,6 @@
 function formatDate(timestamp) {
     let now = new Date(timestamp);
     let date = now.getDate();
-    let hours = now.getHours();
-    if(hours <0){
-        hours = `0${hours}`;
-    }
-    let minutes = now.getMinutes();
-    if (minutes <10) {
-        minutes = `0${minutes}`;
-    }
     let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     let day = days[now.getDay()]; 
     let months = [
@@ -27,7 +19,21 @@ function formatDate(timestamp) {
       ];
       let month = months[now.getMonth()];
       let year = now.getFullYear();
-    return `${day} <br /><small> ${hours}:${minutes}<br />${month} ${date}, ${year}</small>`;
+    return `${day} <br /><small> ${formatHours(timestamp)}<br />
+    ${month} ${date}, ${year}</small>`;
+}
+function formatHours(timestamp){
+    let now = new Date(timestamp);
+    let date = now.getDate();
+    let hours = now.getHours();
+    if(hours <0){
+        hours = `0${hours}`;
+    }
+    let minutes = now.getMinutes();
+    if (minutes <10) {
+        minutes = `0${minutes}`;
+    } 
+    return `${hours}:${minutes}`;
 }
 
 
@@ -56,17 +62,41 @@ function showTemperature(response) {
     iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     iconElement.setAttribute("alt", response.data.weather[0].description)
     celciusTemperature=response.data.main.temp;
+};
+function displayForecast(response){
+ 
+    let forecastElement=document.querySelector("#forecast");
+    forecastElement.innerHTML = null;
+    let forecast=0;
+    for(let i=0; i<=6; i++){
+    forecast=response.data.list[i];
+    forecastElement.innerHTML += `
+    <div class="col-2">
+    <h3>
+      ${formatHours(forecast.dt*1000)}
+    </h3>
+    <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+    <div class="weather-forecast-temperature">
+    <strong>${Math.round(forecast.main.temp_max)}°</strong>/${Math.round(forecast.main.temp_min)}°
+    </div>
+    </div>
+    `;
+}
 }
 function search(city) {
     let apiKey = "5fc324aaf951a7a1b818994b70c47e36";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    
     axios.get(apiUrl).then(showTemperature);
-}
+
+    apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayForecast);
+ }
+
 function handleSubmit(event) {
     event.preventDefault();
     let cityInputElement = document.querySelector("#input-place");
    search(cityInputElement.value)
+
 }
 function displayFahrenheitTemperature(event) {
     event.preventDefault();
@@ -95,5 +125,3 @@ search("Chicago");
 
 let form = document.querySelector("#search-city");
 form.addEventListener("submit",handleSubmit);
-
-
