@@ -4,7 +4,10 @@ body {
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
+
+    
 .weather-app {
     max-width: width 600px;
     margin: 30px auto;
@@ -26,10 +29,13 @@ body {
     display: block;
     text-align: center;
 } 
-
-.current-display img {
-    width: 30%;
-}
+#icon {
+    display: block;
+    position: relative;
+    left: 5px;
+    width: 230px;
+    margin-top: -54px;
+  
 
 .three-hours-forecast {
     margin-top: 20px;
