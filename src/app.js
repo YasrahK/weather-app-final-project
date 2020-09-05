@@ -18,9 +18,8 @@ function showTemperature(response) {
     windSpeedElement.innerHTML=Math.round(response.data.wind.speed);
     humidityElement.innerHTML=response.data.main.humidity;
     pressureElement.innerHTML=response.data.main.pressure;
-    HTMLTableDataCellElement.innerHTML=formatDate(response.data.dt*1000);
+
 }
-function
 
 
 
