@@ -55,6 +55,7 @@ function showTemperature(response) {
     dateElement.innerHTML=formatDate(response.data.dt*1000);
     iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     iconElement.setAttribute("alt", response.data.weather[0].description)
+    celciusTemperature=response.data.main.temp;
 }
 function search(city) {
     let apiKey = "5fc324aaf951a7a1b818994b70c47e36";
@@ -67,6 +68,28 @@ function handleSubmit(event) {
     let cityInputElement = document.querySelector("#input-place");
    search(cityInputElement.value)
 }
+function displayFahrenheitTemperature(event) {
+    event.preventDefault();
+    celciusButton.classList.remove("active");
+    fahrenheitButton.classList.add("active");
+    let fahrenheitTemperature=(celciusTemperature*9)/5+32;
+    let temperatureElement=document.querySelector("#temp-reading");
+    temperatureElement.innerHTML=Math.round(fahrenheitTemperature);
+}
+function displayCelciusTemperature(event) {
+    event.preventDefault();
+    celciusButton.classList.add("active");
+    fahrenheitButton.classList.remove("active");
+let temperatureElement = document.querySelector("#temp-reading");
+temperatureElement.innerHTML=Math.round(celciusTemperature);
+}
+let fahrenheitButton=document.querySelector("#fahrenheit");
+fahrenheitButton.addEventListener("click",displayFahrenheitTemperature);
+
+let celciusButton=document.querySelector("#celcius");
+celciusButton.addEventListener("click",displayCelciusTemperature);
+
+let celciusTemperature = null;
 
 search("Chicago");
 

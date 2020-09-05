@@ -32,4 +32,13 @@
 
 #description::first-letter{
     text-transform:uppercase;
+
+}
+
+.weather-temperature.active {
+    color: midnightblue;
+    cursor:default;
+}
+.weather-temperature.active:hover {
+    text-decoration: none;
 }
