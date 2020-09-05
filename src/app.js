@@ -31,8 +31,6 @@ function formatDate(timestamp) {
 }
 
 
-
-
 function showTemperature(response) {
     let temperatureElement=document.querySelector("#temp-reading");
     let cityElement=document.querySelector("#city");
@@ -58,10 +56,21 @@ function showTemperature(response) {
     iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     iconElement.setAttribute("alt", response.data.weather[0].description)
 }
+function search(city) {
+    let apiKey = "5fc324aaf951a7a1b818994b70c47e36";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    
+    axios.get(apiUrl).then(showTemperature);
+}
+function handleSubmit(event) {
+    event.preventDefault();
+    let cityInputElement = document.querySelector("#input-place");
+   search(cityInputElement.value)
+}
+
+search("Chicago");
+
+let form = document.querySelector("#search-city");
+form.addEventListener("submit",handleSubmit);
 
 
-let city = "Chicago";
-let apiKey = "5fc324aaf951a7a1b818994b70c47e36";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-axios.get(apiUrl).then(showTemperature);
