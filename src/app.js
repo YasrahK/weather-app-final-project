@@ -63,6 +63,7 @@ function showTemperature(response) {
     iconElement.setAttribute("alt", response.data.weather[0].description)
     celciusTemperature=response.data.main.temp;
 };
+
 function displayForecast(response){
  
     let forecastElement=document.querySelector("#forecast");
