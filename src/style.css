@@ -14,10 +14,10 @@ body {
     padding: 20px;
 }
 .container {
-    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 10%);
 }
 .card {
-    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 200%);
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 20%);
 }
 
 .c-f-buttons{
@@ -57,3 +57,4 @@ body {
 #temp-attributes {
     font-size: 13px;
 }
+
